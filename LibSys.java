@@ -55,6 +55,8 @@ public class LibSys {
         Reader reader = login.loginReader(id, password);
         Librarian librarian = login.loginLibrarian(id, password);
 
+        scanner.close();
+        
         // Provide appropriate access based on user type
         if (reader != null) {
             // Reader login successful
@@ -73,6 +75,8 @@ public class LibSys {
             System.out.println("Invalid ID or password. Please try again.");
             return null;
         }
+
+        
     }
 
     private static void populateRandomData() {

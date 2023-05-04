@@ -1,5 +1,6 @@
 import java.util.List;
 import java.lang.System;
+import java.util.Scanner;
 
 public class Librarian extends User {
 
@@ -49,16 +50,67 @@ public class Librarian extends User {
         return false;
     }
 
-    public void addUser(Reader reader, ReaderDatabase userDatabase) {
+    public void addUser(ReaderDatabase userDatabase) {
+        String newname, newemail, newusername, newpassword,  newaddress, newphoneNumber, newID;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        newname = scanner.nextLine();
+
+        System.out.print("Enter your Email: ");
+        newemail = scanner.nextLine();
+
+        System.out.print("Enter your Username: ");
+        newusername = scanner.nextLine();
+
+        System.out.print("Enter your Password: ");
+        newpassword = scanner.nextLine();
+
+        System.out.print("Enter your Address: ");
+        newaddress = scanner.nextLine();
+
+        System.out.print("Enter your Phone Number: ");
+        newphoneNumber = scanner.nextLine();
+
+        System.out.print("Enter your ID: ");
+        newID = scanner.nextLine();
+
+        Reader reader = new Reader( newname,  newemail,  newusername,  newpassword,  newaddress,  newphoneNumber,  newID);
+
         userDatabase.addItem(reader);
+
+        scanner.close();
+        
     }
 
     public void removeUser(Reader reader, ReaderDatabase userDatabase) {
         userDatabase.removeItem(reader);
     }
 
-    public void addBook(Book book, BookDatabase bookDatabase) {
+    public void addBook(BookDatabase bookDatabase) {
+        String newtitle, newauthor, newgenre, newISBN;
+        int newPublicationyaer;
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your title: ");
+        newtitle = scanner.nextLine();
+
+        System.out.print("Enter your author: ");
+        newauthor = scanner.nextLine();
+
+        System.out.print("Enter your genre: ");
+        newgenre = scanner.nextLine();
+
+        System.out.print("Enter your ISBN: ");
+        newISBN = scanner.nextLine();
+
+        System.out.print("Enter your Publication Year: ");
+        newPublicationyaer = scanner.nextInt();
+
+        Book book = new Book(newtitle, newauthor, newgenre, newISBN, newPublicationyaer);
         bookDatabase.addItem(book);
+
+        scanner.close();
     }
 
     //TODO THE ADDS SHOULD BE CALLING THE CONSTRUCTOR YOU RETARD
