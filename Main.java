@@ -24,6 +24,7 @@ public class Main {
                 Scanner scanner = new Scanner(System.in);
                 System.out.print("Enter the title of the book to borrow: ");
                 String bookTitle = scanner.nextLine();
+                scanner.close();
 
 
                 // Search for the book in the database by title
@@ -52,6 +53,9 @@ public class Main {
             LibSys.DisplayBorrowedBooks();
             LibSys.DisplayBorrowedBooksAndReader();
             book.displayWaitlist();
+            
         }
+
+        
     }
 }
