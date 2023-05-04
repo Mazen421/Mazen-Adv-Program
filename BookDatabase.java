@@ -67,13 +67,15 @@ public class BookDatabase extends DummyDatabase<Book> {
         return foundBooks;
     }
 
-    public boolean borrowBook(Book book) {
+    public boolean borrowBook(Book book, Reader reader) {
         if (book.isAvailable()) {
             book.setAvailability(false);
+            book.setHeldBy(reader.getName());
             borrowedBooks.add(book);
             return true;
         }
         else {
+            book.addToWaitlist(reader);
         return false;}
     }
 

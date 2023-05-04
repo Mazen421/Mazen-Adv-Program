@@ -12,17 +12,18 @@ public class Reader extends User {
     }
 
     public boolean borrowBook(Book book, BookDatabase bookDatabase) {
-        if (isBanned || !bookDatabase.borrowBook(book)) {
-            return false; // Unable to borrow book
+        if (isBanned) {
+            return false; // Unable to borrow book due to being banned
         }
-        else {
-            book.setHeldBy(getName()); // Update the 'heldBy' value to the reader's name
+
+        boolean success = bookDatabase.borrowBook(book, this);
+
+        if (success) {
             readerBorrowedBooks.add(book); // Track the borrowed book
             return true; // Book successfully borrowed
+        } else {
+            return false; // Book not available, added to the waitlist
         }
-
-
-        //TODO ORDER LIST
     }
 
     public boolean returnBook(Book book, BookDatabase bookDatabase) {
