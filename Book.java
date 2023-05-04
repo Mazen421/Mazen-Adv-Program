@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
     private String title;
     private String author;
@@ -8,6 +11,9 @@ public class Book {
 
     private String heldBy; // New instance variable to track the reader holding the book
 
+    private List<Reader> waitlist;
+
+
 
     public Book(String title, String author, String genre, String ISBN, int publicationYear) {
         this.title = title;
@@ -17,7 +23,9 @@ public class Book {
         this.publicationYear = publicationYear;
         this.availability = true; // By default, the book is available
         this.heldBy = null;
+        waitlist = new ArrayList<>();
     }
+
 
     // Getters and setters for the instance variables
 
@@ -80,6 +88,29 @@ public class Book {
 
     // Other methods specific to the Book class
     // ...
+    public void addToWaitlist(Reader reader) {
+        if (reader.getName() != getHeldBy()){
+        waitlist.add(reader);}
+        else {
+            throw new DoubleBorrowException("Book already held by " + reader.getName());
+        }
+    }
+
+    public void removeFromWaitlist(Reader reader) {
+        waitlist.remove(reader);
+    }
+
+    public List<Reader> getWaitlist() {
+        return waitlist;
+    }
+
+    public void displayWaitlist() {
+        System.out.println("Waitlist for book '" + getTitle() + "':");
+        for (int i = 0; i < waitlist.size(); i++) {
+            Reader reader = waitlist.get(i);
+            System.out.println((i + 1) + ". " + reader.getName());
+        }
+    }
 
     @Override
     public String toString() {
