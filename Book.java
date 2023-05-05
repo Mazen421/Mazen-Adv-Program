@@ -13,7 +13,7 @@ public class Book {
 
     private List<Reader> waitlist;
 
-    //TODO LIBRARIANS SHOULD CONTROL WAITLIST
+    //TODO LIBRARIANS SHOULD CONTROL WAITLIST, Done?
 
 
 
