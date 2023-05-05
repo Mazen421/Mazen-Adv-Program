@@ -14,7 +14,6 @@ public abstract class DummyDatabase<T> {
         items.add(item);
     }
 
-    //TODO THROW THE EXCEPTION YOU CREATED RETARD
 
     public void removeItem(T item) {
         items.remove(item);
@@ -48,7 +47,6 @@ public abstract class DummyDatabase<T> {
         }
     }
 
-    //TODO WHY TF DO YOU HAVE USERNAME??
 
     private String generateRandomID() {
         Random random = new Random();
