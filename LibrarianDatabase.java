@@ -11,6 +11,13 @@ public class LibrarianDatabase extends DummyDatabase<Librarian> {
     protected Librarian createItem(String name, String email, String username, String password, String address, String phonenumber, String ID) {
         return new Librarian(name, email, username, password, address, phonenumber, ID);
     }
+    public void addItem(Librarian item) {
+        if (item instanceof Librarian) {
+            super.addItem(item);
+        } else {
+            throw new DatabaseTypeMismatchException("Invalid item type. Only Librarian objects are allowed.");
+        }
+    }
 
 
 

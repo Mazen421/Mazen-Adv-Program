@@ -12,6 +12,14 @@ public class ReaderDatabase extends DummyDatabase<Reader> {
         return new Reader(name, email, username, password, address, phonenumber, ID);
     }
 
+    public void addItem(Reader item) {
+        if (item instanceof Reader) {
+            super.addItem(item);
+        } else {
+            throw new DatabaseTypeMismatchException("Invalid item type. Only Reader objects are allowed.");
+        }
+    }
+
 
 
     public List<Reader> searchUsers(String keyword) {
