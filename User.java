@@ -12,6 +12,7 @@ public abstract class User {
     private String address;
     private String phonenumber;
 
+    //TODO USERS SHOULD SEARCH DATABASE FOR USER
 
 
     public User(String name, String email, String password, String address, String phonenumber, String ID) {

@@ -24,8 +24,8 @@ public class Main {
                 BookDatabase bookDatabase = LibSys.getBookDatabase();
 
                 // Prompt the user to enter the book title
-                Librarian.addUser(readerDatabase);
-                Librarian.addBook(bookDatabase);
+                Librarian.addToDatabase(readerDatabase);
+                Librarian.addToDatabase(bookDatabase);
 
 
 

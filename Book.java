@@ -13,6 +13,8 @@ public class Book {
 
     private List<Reader> waitlist;
 
+    //TODO LIBRARIANS SHOULD CONTROL WAITLIST
+
 
 
     public Book(String title, String author, String genre, String ISBN, int publicationYear) {

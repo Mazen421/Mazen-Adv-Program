@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Librarian extends User {
 
+
+
     public Librarian(String name, String email, String password, String address, String phoneNumber, String ID) {
         super(name, email, password, address, phoneNumber, ID);
     }
@@ -50,7 +52,7 @@ public class Librarian extends User {
         return false;
     }
 
-    public void addUser(ReaderDatabase userDatabase) {
+    public void addToDatabase(ReaderDatabase userDatabase) {
         String newname, newemail, newpassword,  newaddress, newphoneNumber, newID;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name: ");
@@ -80,11 +82,16 @@ public class Librarian extends User {
         
     }
 
-    public void removeUser(Reader reader, ReaderDatabase userDatabase) {
+    public void removeFromDatabase(Reader reader, ReaderDatabase userDatabase) {
         userDatabase.removeItem(reader);
     }
+    public void removeFromDatabase(Book book, BookDatabase bookDatabase) {
+        bookDatabase.removeItem(book);
+    }
 
-    public void addBook(BookDatabase bookDatabase) {
+    //OVERLOADING ACHIEVED BB!!!!111!1
+
+    public void addToDatabase(BookDatabase bookDatabase) {
         String newtitle, newauthor, newgenre, newISBN;
         int newPublicationyaer;
 
@@ -112,9 +119,7 @@ public class Librarian extends User {
     }
 
 
-    public void removeBook(Book book, BookDatabase bookDatabase) {
-        bookDatabase.removeItem(book);
-    }
+
 
     public void displayAllReaders(ReaderDatabase ReaderDatabase) {
         System.out.println(ReaderDatabase.toString());
