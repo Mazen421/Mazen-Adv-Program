@@ -32,6 +32,10 @@ public class Librarian extends User {
         reader.setBanned(false);
     }
 
+    public void Libremovewaitlist (Book book, Reader reader){// create an instance of the Reader class
+        book.removeFromWaitlist(reader);
+    }
+
     public boolean addBorrowedBook(Reader reader, Book book) {
         if (book.isAvailable() && !reader.getReaderBorrowedBooks().contains(book)) {
             reader.getReaderBorrowedBooks().add(book);
