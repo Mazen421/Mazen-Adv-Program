@@ -22,7 +22,7 @@ public class LibSys {
         // ... TODO
 
         //Generate Admin Librarian
-        Librarian admin = new Librarian("admin", "admin@example.com", "admin", "admin123", "Admin Address", "1234567890", "11111");
+        Librarian admin = new Librarian("admin", "admin@example.com", "admin123", "Admin Address", "1234567890", "11111");
         librarianDatabase.addItem(admin);
 
 

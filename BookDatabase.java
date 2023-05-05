@@ -11,7 +11,7 @@ public class BookDatabase extends DummyDatabase<Book> {
     }
 
     @Override
-    protected Book createItem(String name, String email, String username, String password, String address, String phonenumber, String ID) {
+    protected Book createItem(String name, String email, String password, String address, String phonenumber, String ID) {
         // Not applicable for BookDatabase
         return null;
     }

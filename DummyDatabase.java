@@ -39,12 +39,11 @@ public abstract class DummyDatabase<T> {
         for (int i = 0; i < 5; i++) {
             String name = "User" + (i + 1);
             String email = name.toLowerCase() + "@example.com";
-            String username = name.toLowerCase();
             String password = generateRandomPassword();
             String id = generateRandomID();
             String Null = "Null";
 
-            T item = createItem(name, email, username, password, Null, Null, id);
+            T item = createItem(name, email, password, Null, Null, id);
             items.add(item);
         }
     }
@@ -65,7 +64,7 @@ public abstract class DummyDatabase<T> {
         return sb.toString();
     }
 
-    protected abstract T createItem(String name, String email, String username, String password, String address, String phonenumber, String ID);
+    protected abstract T createItem(String name, String email, String password, String address, String phonenumber, String ID);
 
     private String generateRandomPassword() {
         Random random = new Random();

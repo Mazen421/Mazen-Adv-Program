@@ -8,8 +8,8 @@ public class LibrarianDatabase extends DummyDatabase<Librarian> {
     }
 
     @Override
-    protected Librarian createItem(String name, String email, String username, String password, String address, String phonenumber, String ID) {
-        return new Librarian(name, email, username, password, address, phonenumber, ID);
+    protected Librarian createItem(String name, String email, String password, String address, String phonenumber, String ID) {
+        return new Librarian(name, email, password, address, phonenumber, ID);
     }
     public void addItem(Librarian item) {
         if (item instanceof Librarian) {
@@ -25,7 +25,7 @@ public class LibrarianDatabase extends DummyDatabase<Librarian> {
     public List<Librarian> searchLibrarians(String keyword) {
         List<Librarian> foundLibrarians = new ArrayList<>();
         for (Librarian librarian : getItems()) {
-            if (librarian.getName().contains(keyword) || librarian.getEmail().contains(keyword) || librarian.getUsername().contains(keyword)) {
+            if (librarian.getName().contains(keyword) || librarian.getEmail().contains(keyword)) {
                 foundLibrarians.add(librarian);
             }
         }
