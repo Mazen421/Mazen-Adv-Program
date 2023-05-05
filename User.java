@@ -64,7 +64,7 @@ public abstract class User {
         return foundBooks;
     }
 
-    //TODO PUT INSIDE BOOKDATABASE INSTEAD OF USER
+    //CONSIDER PUT INSIDE BOOKDATABASE INSTEAD OF USER
 
 
 
