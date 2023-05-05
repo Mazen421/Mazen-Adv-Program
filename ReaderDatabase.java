@@ -8,8 +8,8 @@ public class ReaderDatabase extends DummyDatabase<Reader> {
     }
 
     @Override
-    protected Reader createItem(String name, String email, String username, String password,String address, String phonenumber, String ID) {
-        return new Reader(name, email, username, password, address, phonenumber, ID);
+    protected Reader createItem(String name, String email, String password,String address, String phonenumber, String ID) {
+        return new Reader(name, email, password, address, phonenumber, ID);
     }
 
     public void addItem(Reader item) {
@@ -25,7 +25,7 @@ public class ReaderDatabase extends DummyDatabase<Reader> {
     public List<Reader> searchUsers(String keyword) {
         List<Reader> foundReaders = new ArrayList<>();
         for (Reader reader : getItems()) {
-            if (reader.getName().contains(keyword) || reader.getEmail().contains(keyword) || reader.getUsername().contains(keyword)) {
+            if (reader.getName().contains(keyword) || reader.getEmail().contains(keyword)) {
                 foundReaders.add(reader);
             }
         }

@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Librarian extends User {
 
-    public Librarian(String name, String email, String username, String password, String address, String phoneNumber, String ID) {
-        super(name, email, username, password, address, phoneNumber, ID);
+    public Librarian(String name, String email, String password, String address, String phoneNumber, String ID) {
+        super(name, email, password, address, phoneNumber, ID);
     }
 
-    public void editReaderInfo(Reader reader, String name, String email, String username, String password, String address, String phoneNumber, String ID) {
+    public void editReaderInfo(Reader reader, String name, String email, String password, String address, String phoneNumber, String ID) {
         reader.setName(name);
         reader.setEmail(email);
-        reader.setUsername(username);
+
         reader.setPassword(password);
         reader.setAddress(address);
         reader.setPhonenumber(phoneNumber);
@@ -51,7 +51,7 @@ public class Librarian extends User {
     }
 
     public void addUser(ReaderDatabase userDatabase) {
-        String newname, newemail, newusername, newpassword,  newaddress, newphoneNumber, newID;
+        String newname, newemail, newpassword,  newaddress, newphoneNumber, newID;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name: ");
         newname = scanner.nextLine();
@@ -59,8 +59,6 @@ public class Librarian extends User {
         System.out.println("Enter your Email: ");
         newemail = scanner.nextLine();
 
-        System.out.println("Enter your Username: ");
-        newusername = scanner.nextLine();
 
         System.out.println("Enter your Password: ");
         newpassword = scanner.nextLine();
@@ -74,7 +72,7 @@ public class Librarian extends User {
         System.out.println("Enter your ID: ");
         newID = scanner.nextLine();
 
-        Reader reader = new Reader( newname,  newemail,  newusername,  newpassword,  newaddress,  newphoneNumber,  newID);
+        Reader reader = new Reader( newname,  newemail,  newpassword,  newaddress,  newphoneNumber,  newID);
 
         userDatabase.addItem(reader);
 
@@ -113,7 +111,6 @@ public class Librarian extends User {
 
     }
 
-    //TODO THE ADDS SHOULD BE CALLING THE CONSTRUCTOR YOU RETARD
 
     public void removeBook(Book book, BookDatabase bookDatabase) {
         bookDatabase.removeItem(book);
@@ -128,7 +125,6 @@ public class Librarian extends User {
         return "Librarian{" +
                 "name='" + getName() + '\'' +
                 ", email='" + getEmail() + '\'' +
-                ", username='" + getUsername() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", phoneNumber='" + getPhonenumber() + '\'' +
                 ", address='" + getAddress() + '\'' +

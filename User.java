@@ -6,7 +6,7 @@ public abstract class User {
 
     private String ID;
     private String email;
-    private String username;
+
     private String password;
 
     private String address;
@@ -14,10 +14,9 @@ public abstract class User {
 
 
 
-    public User(String name, String email, String username, String password, String address, String phonenumber, String ID) {
+    public User(String name, String email, String password, String address, String phonenumber, String ID) {
         this.name = name;
         this.email = email;
-        this.username = username;
         this.password = password;
         this.address = address;
         this.phonenumber = phonenumber;
@@ -85,14 +84,6 @@ public abstract class User {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -127,7 +118,6 @@ public abstract class User {
         return "User{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", Phonenumber='" + phonenumber + '\'' +
                 ", Address='" + address + '\'' +

@@ -5,8 +5,8 @@ public class Reader extends User {
     private List<Book> readerBorrowedBooks;
     private boolean isBanned;
 
-    public Reader(String name, String email, String username, String password, String address, String phoneNumber, String ID) {
-        super(name, email, username, password, address, phoneNumber, ID);
+    public Reader(String name, String email, String password, String address, String phoneNumber, String ID) {
+        super(name, email, password, address, phoneNumber, ID);
         this.readerBorrowedBooks = new ArrayList<>();
         this.isBanned = false;
     }
@@ -67,7 +67,6 @@ public class Reader extends User {
         return "Reader{" +
                 "name='" + getName() + '\'' +
                 ", email='" + getEmail() + '\'' +
-                ", username='" + getUsername() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", phoneNumber='" + getPhonenumber() + '\'' +
                 ", address='" + getAddress() + '\'' +
