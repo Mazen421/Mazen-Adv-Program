@@ -92,21 +92,21 @@ public class LibSys {
         List<Reader> readers = readerDatabase.getItems();
         for (int i = 0; i < readers.size(); i++) {
             Reader reader = readers.get(i);
-            System.out.println((i + 1) + ". " + reader.toStringMini());
+            System.out.println((i + 1) + ". " + reader.toString());
         }
 
         System.out.println("\nLibrarians:");
         List<Librarian> librarians = librarianDatabase.getItems();
         for (int i = 0; i < librarians.size(); i++) {
             Librarian librarian = librarians.get(i);
-            System.out.println((i + 1) + ". " + librarian.toStringMini());
+            System.out.println((i + 1) + ". " + librarian.toString());
         }
 
         System.out.println("\nBooks:");
         List<Book> books = bookDatabase.getItems();
         for (int i = 0; i < books.size(); i++) {
             Book book = books.get(i);
-            System.out.println((i + 1) + ". " + book.getTitle());
+            System.out.println((i + 1) + ". " + book.toString());
         }
     }
     public static ReaderDatabase getReaderDatabase() {

@@ -25,10 +25,16 @@ public class LibrarianDatabase extends DummyDatabase<Librarian> {
     public List<Librarian> searchLibrarians(String keyword) {
         List<Librarian> foundLibrarians = new ArrayList<>();
         for (Librarian librarian : getItems()) {
-            if (librarian.getName().contains(keyword) || librarian.getEmail().contains(keyword)) {
+            if (librarian.getName().contains(keyword) || librarian.getEmail().contains(keyword) || librarian.getID().contains(keyword)) {
                 foundLibrarians.add(librarian);
             }
         }
-        return foundLibrarians;
+
+        if (foundLibrarians.isEmpty()){
+            System.out.println("Librarian not found");
+            return null;
+        }
+        else {
+            return foundLibrarians;}
     }
 }

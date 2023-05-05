@@ -36,7 +36,7 @@ public abstract class DummyDatabase<T> {
         Random random = new Random();
 
         for (int i = 0; i < 5; i++) {
-            String name = "User" + (i + 1);
+            String name = generateRandomName();
             String email = name.toLowerCase() + "@example.com";
             String password = generateRandomPassword();
             String id = generateRandomID();
@@ -88,4 +88,27 @@ public abstract class DummyDatabase<T> {
         }
         return sb.toString();
     }
+
+    public String generateRandomName(){
+        String[] firstNames = {
+                "John", "Jane", "David", "Emily", "Michael", "Emma", "Daniel", "Olivia",
+                "William", "Sophia", "James", "Ava", "Joseph", "Mia", "Benjamin", "Isabella",
+                "Jacob", "Charlotte", "Matthew", "Amelia", "Ethan", "Harper", "Samuel", "Evelyn",
+                "Alexander", "Abigail", "Henry", "Elizabeth", "Daniel", "Sofia", "Anthony", "Grace"
+        };
+
+        String[] lastNames = {
+                "Smith", "Johnson", "Brown", "Davis", "Miller", "Wilson", "Anderson", "Taylor",
+                "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez",
+                "Clark", "Lewis", "Lee", "Walker", "Hall", "Young", "Allen", "Wright", "King",
+                "Turner", "Adams", "Scott", "Baker", "Gonzalez", "Nelson", "Carter", "Perez"
+        };
+
+        Random random = new Random();
+        String firstName = firstNames[random.nextInt(firstNames.length)];
+        String lastName = lastNames[random.nextInt(lastNames.length)];
+        return firstName + " " + lastName;
+
+    }
+
 }

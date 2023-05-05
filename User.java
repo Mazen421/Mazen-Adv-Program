@@ -113,6 +113,20 @@ public abstract class User {
         this.ID = id;
     }
 
+    public List<Reader> SearchReaderByKeyword(String Key, ReaderDatabase ReBase) {
+        List<Reader> foundReaders = new ArrayList<>();
+        foundReaders = ReBase.searchUsers(Key);
+        return foundReaders;
+
+    }
+
+    public List<Librarian> SearchLibrarianByKeyword(String Key,LibrarianDatabase LibBase) {
+        List<Librarian> foundLibs = new ArrayList<>();
+        foundLibs = LibBase.searchLibrarians(Key);
+        return foundLibs;
+
+    }
+
 
     @Override
     public String toString() {

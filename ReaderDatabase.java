@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ReaderDatabase extends DummyDatabase<Reader> {
 
@@ -25,10 +26,18 @@ public class ReaderDatabase extends DummyDatabase<Reader> {
     public List<Reader> searchUsers(String keyword) {
         List<Reader> foundReaders = new ArrayList<>();
         for (Reader reader : getItems()) {
-            if (reader.getName().contains(keyword) || reader.getEmail().contains(keyword)) {
+            if (reader.getName().contains(keyword) || reader.getEmail().contains(keyword) || reader.getID().contains(keyword)) {
                 foundReaders.add(reader);
             }
         }
-        return foundReaders;
+
+        if (foundReaders.isEmpty()){
+            System.out.println("reader not found");
+            return null;
+        }
+        else {
+        return foundReaders;}
     }
+
+
 }
