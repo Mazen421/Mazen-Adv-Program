@@ -55,7 +55,6 @@ public class LibSys {
         Reader reader = login.loginReader(id, password);
         Librarian librarian = login.loginLibrarian(id, password);
 
-        scanner.close();
         
         // Provide appropriate access based on user type
         if (reader != null) {

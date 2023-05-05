@@ -53,32 +53,32 @@ public class Librarian extends User {
     public void addUser(ReaderDatabase userDatabase) {
         String newname, newemail, newusername, newpassword,  newaddress, newphoneNumber, newID;
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your name: ");
+        System.out.println("Enter your name: ");
         newname = scanner.nextLine();
 
-        System.out.print("Enter your Email: ");
+        System.out.println("Enter your Email: ");
         newemail = scanner.nextLine();
 
-        System.out.print("Enter your Username: ");
+        System.out.println("Enter your Username: ");
         newusername = scanner.nextLine();
 
-        System.out.print("Enter your Password: ");
+        System.out.println("Enter your Password: ");
         newpassword = scanner.nextLine();
 
-        System.out.print("Enter your Address: ");
+        System.out.println("Enter your Address: ");
         newaddress = scanner.nextLine();
 
-        System.out.print("Enter your Phone Number: ");
+        System.out.println("Enter your Phone Number: ");
         newphoneNumber = scanner.nextLine();
 
-        System.out.print("Enter your ID: ");
+        System.out.println("Enter your ID: ");
         newID = scanner.nextLine();
 
         Reader reader = new Reader( newname,  newemail,  newusername,  newpassword,  newaddress,  newphoneNumber,  newID);
 
         userDatabase.addItem(reader);
 
-        scanner.close();
+
         
     }
 
@@ -110,7 +110,7 @@ public class Librarian extends User {
         Book book = new Book(newtitle, newauthor, newgenre, newISBN, newPublicationyaer);
         bookDatabase.addItem(book);
 
-        scanner.close();
+
     }
 
     //TODO THE ADDS SHOULD BE CALLING THE CONSTRUCTOR YOU RETARD
