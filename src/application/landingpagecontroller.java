@@ -11,7 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -22,12 +26,21 @@ public class landingpagecontroller {
     private Button loginbut;
     @FXML
     private TextField userfield,passwordfield;
-    
+    @FXML
+    private Label passlabel,userlabel;
+
+
+
+
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     public void login(ActionEvent event) throws IOException{
+
+        userlabel.setTextFill(Color.BLACK); 
+        passlabel.setTextFill(Color.BLACK);
+
 
         String username = userfield.getText();
         String password = passwordfield.getText();
@@ -46,7 +59,8 @@ public class landingpagecontroller {
         } 
         else {
             // Login failed
-            
+            userlabel.setTextFill(Color.RED); 
+            passlabel.setTextFill(Color.RED);
             System.out.println("Login failed");
         }
 
