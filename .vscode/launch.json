@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "java",
             "name": "Current File",
@@ -14,9 +15,9 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
-            "vmArgs": "--module-path F:/Projects/Programming/javafx-sdk-20.0.1/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "Main",    
-            "projectName": "Mazen-Adv-Program_c0cb195f_e42be2d6"
+            "vmArgs": "--module-path F:/Projects/Programming/javafx-sdk-20.0.1/lib --add-modules javafx.controls,javafx.fxml", 
+            "mainClass": "Main",
+            "projectName": "Mazen-Adv-Program_c0cb195f"
         }
     ]
 }
