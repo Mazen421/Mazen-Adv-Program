@@ -46,6 +46,7 @@ public class landingpagecontroller {
         } 
         else {
             // Login failed
+            
             System.out.println("Login failed");
         }
 
