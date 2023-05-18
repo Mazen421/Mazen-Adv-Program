@@ -38,6 +38,10 @@ public class Librarian extends User {
         book.removeFromWaitlist(reader);
     }
 
+    public void Libraddwaitlist(Book book, Reader reader){// create an instance of the Reader class
+        book.addToWaitlist(reader);
+    }
+
     public boolean addBorrowedBook(Reader reader, Book book) {
         if (book.isAvailable() && !reader.getReaderBorrowedBooks().contains(book)) {
             reader.getReaderBorrowedBooks().add(book);

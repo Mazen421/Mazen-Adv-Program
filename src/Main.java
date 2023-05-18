@@ -66,7 +66,7 @@ public class    Main extends Application{
 /*
         LibSys.startRand(); // Populate the databases with random users, librarians, and books
         User loggedInUser;
-        Book book = null; // Declare the book variable outside the if statement
+         // Declare the book variable outside the if statement
         LibrarianDatabase Libbase = LibSys.getLibrarianDatabase();
         ReaderDatabase Readbase = LibSys.getReaderDatabase();
 
