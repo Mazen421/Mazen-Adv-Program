@@ -41,5 +41,33 @@ public class ReaderDatabase extends DummyDatabase<Reader> {
         return foundReaders;}
     }
 
+    public List<Reader> returnBanned() {
+
+        List<Reader> banned = new ArrayList<>();
+        for (Reader reader : getItems()){
+            if(reader.getBanned()){
+                banned.add(reader);
+            }
+
+
+        }
+        return banned;
+
+    }
+
+    public List<Reader> returnPermitted() {
+
+        List<Reader> Permitted = new ArrayList<>();
+        for (Reader reader : getItems()){
+            if(!reader.getBanned()){
+                Permitted.add(reader);
+            }
+
+
+        }
+        return Permitted;
+
+    }
+
 
 }
