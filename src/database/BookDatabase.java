@@ -70,7 +70,7 @@ public class BookDatabase extends DummyDatabase<Book> {
     }
 
     public boolean borrowBook(Book book, Reader reader) {
-        if (book.isAvailable()) {
+        if (book.isAvailable() && reader.getBanned() == false) {
             book.setAvailability(false);
             book.setHeldBy(reader.getName());
             borrowedBooks.add(book);

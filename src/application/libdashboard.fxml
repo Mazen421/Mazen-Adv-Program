@@ -6,9 +6,10 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -28,7 +29,6 @@
       </Label>
       <TreeView fx:id="dashtree" layoutY="60.0" onContextMenuRequested="#selectitem" onMouseClicked="#selectitem" prefHeight="660.0" prefWidth="225.0" />
       <Button fx:id="logbut" layoutX="1003.0" layoutY="17.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
-      <TextArea layoutX="225.0" layoutY="58.0" prefHeight="105.0" prefWidth="855.0" promptText="GET THIS SHIT OFFF MEEEEEEEEEEE" />
       <TabPane fx:id="tabPane" layoutX="225.0" layoutY="164.0" prefHeight="556.0" prefWidth="855.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Add a book">
@@ -78,11 +78,31 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listremovebook" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="259.0" />
-                        <Button layoutX="357.0" layoutY="243.0" mnemonicParsing="false" onAction="#removebookbutton" text="Remove Book">
+                        <ListView fx:id="listremovebook" layoutX="581.0" layoutY="13.0" prefHeight="296.0" prefWidth="259.0" />
+                        <Button layoutX="640.0" layoutY="329.0" mnemonicParsing="false" onAction="#removebookbutton" text="Remove Book">
                            <font>
                               <Font size="19.0" />
                            </font></Button>
+                        <Label layoutX="60.0" layoutY="174.0" text="Search for book">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="236.0" layoutY="256.0" mnemonicParsing="false" onAction="#resetsearch" text="Reset">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="60.0" layoutY="256.0" mnemonicParsing="false" onAction="#searchbook2" text="Search">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="booksearch2" layoutX="61.0" layoutY="207.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -90,11 +110,59 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listusers" layoutX="14.0" layoutY="14.0" prefHeight="119.0" prefWidth="259.0" />
-                        <Button layoutX="96.0" layoutY="304.0" mnemonicParsing="false" onAction="#rentabook" text="Rent this book" />
-                        <ListView fx:id="listrentabook" layoutX="14.0" layoutY="163.0" prefHeight="119.0" prefWidth="257.0" />
-                        <ListView fx:id="listrentedbooks" layoutX="328.0" layoutY="14.0" prefHeight="493.0" prefWidth="200.0" />
-                        <Button layoutX="577.0" layoutY="251.0" mnemonicParsing="false" onAction="#returnabook" text="Return Book" />
+                        <ListView fx:id="listusers" layoutX="290.0" layoutY="47.0" prefHeight="119.0" prefWidth="241.0" />
+                        <Button layoutX="364.0" layoutY="340.0" mnemonicParsing="false" onAction="#rentabook" text="Rent this book" />
+                        <ListView fx:id="listrentabook" layoutX="291.0" layoutY="215.0" prefHeight="119.0" prefWidth="240.0" />
+                        <ListView fx:id="listrentedbooks" layoutX="543.0" layoutY="16.0" prefHeight="493.0" prefWidth="200.0" />
+                        <Button layoutX="759.0" layoutY="250.0" mnemonicParsing="false" onAction="#returnabook" text="Return Book" />
+                        <Label layoutX="14.0" layoutY="141.0" text="Search for a book:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="booksearch1" layoutX="14.0" layoutY="175.0" prefHeight="40.0" prefWidth="261.0" promptText="Enter any details about book">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#searchbook1" text="Search">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                        <Button layoutX="220.0" layoutY="225.0" mnemonicParsing="false" onAction="#resetsearch" text="Reset">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                        <Label layoutX="17.0" layoutY="16.0" text="Search for a user:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="usersearch1" layoutX="16.0" layoutY="56.0" prefHeight="40.0" prefWidth="259.0" promptText="Enter any details about user">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
+                        <Button layoutX="16.0" layoutY="107.0" mnemonicParsing="false" onAction="#searchuser1" text="Button">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="216.0" layoutY="107.0" mnemonicParsing="false" onAction="#resetsearch" text="Button">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="291.0" layoutY="16.0" text="Users:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="291.0" layoutY="182.0" text="Books:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -151,16 +219,132 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ListView fx:id="listremoveuser" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="259.0" />
-                        <Button layoutX="361.0" layoutY="243.0" mnemonicParsing="false" onAction="#removeuserbutton" text="Remove user">
+                        <ListView fx:id="listremoveuser" layoutX="581.0" layoutY="13.0" prefHeight="500.0" prefWidth="259.0" />
+                        <Button layoutX="400.0" layoutY="243.0" mnemonicParsing="false" onAction="#removeuserbutton" text="Remove user">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Button>
+                        <Label layoutX="52.0" layoutY="208.0" text="Search for a user:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="235.0" layoutY="294.0" mnemonicParsing="false" onAction="#resetsearch" text="Reset">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="52.0" layoutY="294.0" mnemonicParsing="false" onAction="#searchuser2" text="Search">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="usersearch2" layoutX="52.0" layoutY="243.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Block a user">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="avuserlist" layoutX="14.0" layoutY="329.0" prefHeight="185.0" prefWidth="259.0" />
+                        <Button layoutX="286.0" layoutY="409.0" mnemonicParsing="false" onAction="#banuser" text="Ban User" />
+                        <Button layoutX="474.0" layoutY="409.0" mnemonicParsing="false" onAction="#unbanuser" text="Unban User" />
+                        <ListView fx:id="banneduserlist" layoutX="581.0" layoutY="329.0" prefHeight="185.0" prefWidth="259.0" />
+                        <TextField fx:id="usersearch3" layoutX="26.0" layoutY="203.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="usersearch4" layoutX="593.0" layoutY="203.0">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="26.0" layoutY="171.0" text="Search for a user:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="593.0" layoutY="171.0" text="Search for a banned user:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="776.0" layoutY="248.0" mnemonicParsing="false" onAction="#resetsearch" text="Reset">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="209.0" layoutY="248.0" mnemonicParsing="false" onAction="#resetsearch" text="Reset">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="26.0" layoutY="248.0" mnemonicParsing="false" onAction="#searchuser3" text="Search">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="593.0" layoutY="248.0" mnemonicParsing="false" onAction="#searchuser4" text="Search">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Add/Remove user from waiting list">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="allbookslist" layoutX="14.0" layoutY="43.0" prefHeight="124.0" prefWidth="200.0" />
+                        <ListView fx:id="waitingusersadd" layoutX="228.0" layoutY="43.0" prefHeight="124.0" prefWidth="200.0" />
+                        <ListView fx:id="allbookslist1" layoutX="641.0" layoutY="167.0" prefHeight="124.0" prefWidth="200.0" />
+                        <ListView fx:id="alluserslist" layoutX="14.0" layoutY="212.0" prefHeight="124.0" prefWidth="200.0" />
+                        <ListView fx:id="waitingusersremove" layoutX="641.0" layoutY="336.0" prefHeight="124.0" prefWidth="200.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Pick a book:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="228.0" layoutY="16.0" text="Current user on the order list:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="185.0" text="All users:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="641.0" layoutY="140.0" text="Pick a book:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="641.0" layoutY="309.0" text="Select a user to remove">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="88.0" layoutY="352.0" mnemonicParsing="false" text="Add User" />
+                        <Button layoutX="698.0" layoutY="471.0" mnemonicParsing="false" text="Remove User" />
                      </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
       </TabPane>
+      <ImageView fitHeight="102.0" fitWidth="67.0" layoutX="996.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@LogoWhiteBG_cleanup.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
