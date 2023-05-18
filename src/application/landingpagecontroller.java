@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,16 +26,22 @@ public class landingpagecontroller {
     @FXML
     private Button loginbut;
     @FXML
-    private TextField userfield,passwordfield;
+    private TextField userfield;
     @FXML
     private Label passlabel,userlabel;
-
+    @FXML
+    private PasswordField passwordfield;
 
 
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
+    public PasswordField getPasswordField() {
+        return passwordfield;
+    }
+    
 
     public void login(ActionEvent event) throws IOException{
 
@@ -51,11 +58,20 @@ public class landingpagecontroller {
         if (LibSys.loginScreen(username, password) != null) {
             // Login successful
             System.out.println("Login successful");
-                    root = FXMLLoader.load(getClass().getResource("css.fxml"));
-                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
+            if(LibSys.loginScreen(username, password) instanceof database.Reader){
+                root = FXMLLoader.load(getClass().getResource("userdashboard.fxml"));
+                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+            else{
+                root = FXMLLoader.load(getClass().getResource("libdashboard.fxml"));
+                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
         } 
         else {
             // Login failed

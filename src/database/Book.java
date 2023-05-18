@@ -117,13 +117,19 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", genre='" + genre + '\'' +
-                ", ISBN='" + ISBN + '\'' +
-                ", publicationYear=" + publicationYear +
-                ", availability=" + availability +
-                '}';
+        return title;
     }
+
+    public String toStringDebug() {
+        return "Book{" +
+            "title='" + title + '\'' +
+            ", author='" + author + '\'' +
+            ", genre='" + genre + '\'' +
+            ", ISBN='" + ISBN + '\'' +
+            ", publicationYear=" + publicationYear +
+            ", availability=" + availability +
+            '}';
 }
+
+}
+

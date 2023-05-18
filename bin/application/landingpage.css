@@ -7,3 +7,6 @@
     -fx-background-color: #000000;
     -fx-text-fill: white;
 }
+.tab-pane .tab-header-area {
+    -fx-opacity: 0;
+}

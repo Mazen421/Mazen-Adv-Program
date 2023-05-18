@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-
+import application.landingpagecontroller;
 import database.LibrarianDatabase;
 import database.ReaderDatabase;
 import database.User;
@@ -16,6 +16,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 
@@ -24,7 +27,7 @@ public class    Main extends Application{
 
     //TODO MAIN IS FOR TESTS ONLY, THE MENU LOOP WILL BE ADDED LATER USING EVENTS FROM THE GUI.
     public static void main(String[] args) {
-        LibSys.startRand(); // Populate the databases with random users, librarians, and books
+        LibSys.start(); // Populate the databases with random users, librarians, and books
 
         launch(args);
     }
@@ -34,13 +37,14 @@ public class    Main extends Application{
     public void start(Stage stage) throws Exception {
         // TODO Auto-generated method stub
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/application/landingpage.fxml"));
-            Scene scene1 = new Scene(root,400,720);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/libdashboard.fxml"));
+            Parent root = loader.load();
+            Scene scene1 = new Scene(root);
             String css = this.getClass().getResource("/application/landingpage.css").toExternalForm();
             scene1.getStylesheets().add(css);
             stage.setTitle("Demo");
             stage.setScene(scene1);
-            stage.setResizable(false);
+
             stage.show();
 
             /*stage.setOnCloseRequest(event -> {

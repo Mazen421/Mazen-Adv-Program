@@ -132,14 +132,7 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", Phonenumber='" + phonenumber + '\'' +
-                ", Address='" + address + '\'' +
-                ", ID='" + ID + '\'' +
-                '}';
+        return name;
     }
 
     public String toStringMini() {
