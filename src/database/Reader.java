@@ -66,6 +66,10 @@ public class Reader extends User {
 
     @Override
     public String toString() {
+        return getName();
+    }
+
+    public String toStringDebug() {
         return "Reader{" +
                 "name='" + getName() + '\'' +
                 ", email='" + getEmail() + '\'' +
