@@ -1,3 +1,6 @@
+package database;
+
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +9,9 @@ public class LibSys {
     private static LibrarianDatabase librarianDatabase;
     private static BookDatabase bookDatabase;
 
+
+    static String whatever;
+    static String bruh;
 
 
     private static Login login;
@@ -24,9 +30,10 @@ public class LibSys {
         //Generate Admin Librarian
         Librarian admin = new Librarian("admin", "admin@example.com", "admin123", "Admin Address", "1234567890", "11111");
         librarianDatabase.addItem(admin);
+        
 
 
-        loginScreen();
+        loginScreen(whatever, bruh);
     }
 
     public static void startRand() {
@@ -41,15 +48,7 @@ public class LibSys {
         displayAll();
     }
 
-    public static User loginScreen() {
-        Scanner scanner = new Scanner(System.in);
-
-        // Prompt for ID and password
-        System.out.print("Enter ID: ");
-        String id = scanner.nextLine();
-
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
+    public static User loginScreen(String id, String password) {
 
         // Validate credentials
         Reader reader = login.loginReader(id, password);
