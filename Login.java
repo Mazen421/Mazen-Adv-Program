@@ -1,5 +1,3 @@
-package database;
-
 public class Login {
     private ReaderDatabase readerDatabase;
     private LibrarianDatabase librarianDatabase;

@@ -1,5 +1,3 @@
-package database;
-
 public class DoubleBorrowException extends RuntimeException {
 
     public DoubleBorrowException(String message) {
