@@ -1,0 +1,9 @@
+#loginbut {
+    -fx-transition-duration: 0.4s;
+    -fx-background-color: #3377b3;
+}
+
+#loginbut:hover {
+    -fx-background-color: #000000;
+    -fx-text-fill: white;
+}

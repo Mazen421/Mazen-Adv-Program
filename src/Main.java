@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class Main extends Application{
+public class    Main extends Application{
 
     //TODO MAIN IS FOR TESTS ONLY, THE MENU LOOP WILL BE ADDED LATER USING EVENTS FROM THE GUI.
     public static void main(String[] args) {
@@ -33,11 +33,12 @@ public class Main extends Application{
         // TODO Auto-generated method stub
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/application/landingpage.fxml"));
-            Scene scene1 = new Scene(root,1080,720);
+            Scene scene1 = new Scene(root,400,720);
             String css = this.getClass().getResource("/application/landingpage.css").toExternalForm();
             scene1.getStylesheets().add(css);
             stage.setTitle("Demo");
             stage.setScene(scene1);
+            stage.setResizable(false);
             stage.show();
 
             /*stage.setOnCloseRequest(event -> {
