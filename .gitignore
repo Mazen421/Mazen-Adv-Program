@@ -2,3 +2,5 @@
 .vscode/settings.json
 .vscode/launch.json
 *.class
+*.xml
+*.iml
