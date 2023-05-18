@@ -52,10 +52,10 @@ public abstract class DummyDatabase<T> {
 
     private String generateRandomID() {
         Random random = new Random();
-        String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String characters = "0123456789";
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             int randomIndex = random.nextInt(characters.length());
             char randomChar = characters.charAt(randomIndex);
             sb.append(randomChar);
