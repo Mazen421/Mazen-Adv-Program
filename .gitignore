@@ -1,6 +1,4 @@
-*.class
-*.iml
-*.xml
-*.class
+
 .vscode/settings.json
 .vscode/launch.json
+*.class
