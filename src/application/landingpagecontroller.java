@@ -63,6 +63,10 @@ public class landingpagecontroller {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("userdashboard.fxml"));
                 root = loader.load();
 
+                userdashboard userdash = loader.getController();
+                userdash.displayname(LibSys.loginScreen(username, password).getName());
+                userdash.setuserandpass(username, password);
+                
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);

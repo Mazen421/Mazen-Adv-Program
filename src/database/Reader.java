@@ -24,6 +24,7 @@ public class Reader extends User {
             readerBorrowedBooks.add(book); // Track the borrowed book
             return true; // Book successfully borrowed
         } else {
+
             return false; // Book not available, added to the waitlist
         }
     }
@@ -75,5 +76,8 @@ public class Reader extends User {
                 "phoneNumber= " + getPhonenumber() + '\n' +
                 "address= " + getAddress() + '\n' +
                 "ID= " + getID() + '\n';
+    }
+    public String toStringDebugLogin() {
+        return "password: " + getPassword() + '\n' + "ID= " + getID() + '\n';
     }
 }

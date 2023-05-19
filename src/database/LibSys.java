@@ -103,7 +103,7 @@ public class LibSys {
         List<Reader> readers = readerDatabase.getItems();
         for (int i = 0; i < readers.size(); i++) {
             Reader reader = readers.get(i);
-            System.out.println((i + 1) + ". " + reader.toString());
+            System.out.println((i + 1) + ". " + reader.toStringDebugLogin());
         }
 
         System.out.println("\nLibrarians:");

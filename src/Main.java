@@ -38,7 +38,7 @@ public class    Main extends Application{
     public void start(Stage stage) throws Exception {
         try {
             Image icon = new Image("/application/LogoBlueBG_cleanup.png");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/userdashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/landingpage.fxml"));
             Parent root = loader.load();
             Scene scene1 = new Scene(root);
             String css = this.getClass().getResource("/application/landingpage.css").toExternalForm();

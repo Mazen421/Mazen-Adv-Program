@@ -71,6 +71,31 @@
                      </children></AnchorPane>
             </content>
           </Tab>
+            <Tab text="Rent a book">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ListView fx:id="rentabooklist" layoutX="14.0" layoutY="12.0" prefHeight="351.0" prefWidth="200.0" />
+                        <Button layoutX="60.0" layoutY="385.0" mnemonicParsing="false" onAction="#rentabook" text="Rent this book">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="671.0" layoutY="14.0" text="Rented Books">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="userrentedbooks" layoutX="635.0" layoutY="46.0" prefHeight="319.0" prefWidth="200.0" />
+                        <Button layoutX="684.0" layoutY="384.0" mnemonicParsing="false" onAction="#returnabook" text="Return book">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
           <Tab text="Order list">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -81,7 +106,7 @@
                            </font>
                         </Label>
                         <ListView fx:id="booksorderlist" layoutX="14.0" layoutY="56.0" prefHeight="200.0" prefWidth="200.0" />
-                        <Button layoutX="90.0" layoutY="276.0" mnemonicParsing="false" text="Order" />
+                        <Button layoutX="90.0" layoutY="276.0" mnemonicParsing="false" onAction="#orderbook" text="Order" />
                         <ListView fx:id="userswaitlist" layoutX="641.0" layoutY="313.0" prefHeight="200.0" prefWidth="200.0" />
                         <Label layoutX="687.0" layoutY="289.0" text="Current order list:">
                            <font>
@@ -93,12 +118,17 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="244.0" layoutY="120.0">
+                        <TextField fx:id="booksearchfield2" layoutX="244.0" layoutY="120.0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="468.0" layoutY="120.0" mnemonicParsing="false" text="Search">
+                        <Button layoutX="468.0" layoutY="120.0" mnemonicParsing="false" onAction="#searchbook2" text="Search">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="564.0" layoutY="120.0" mnemonicParsing="false" onAction="#resetsearch" text="Reset Search">
                            <font>
                               <Font size="16.0" />
                            </font>

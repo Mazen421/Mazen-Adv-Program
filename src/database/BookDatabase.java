@@ -86,6 +86,7 @@ public class BookDatabase extends DummyDatabase<Book> {
 
     public boolean returnBook(Book book) {
         if (!book.isAvailable()) {
+            book.setHeldBy(null);
             book.setAvailability(true);
             borrowedBooks.remove(book);
             return true;
