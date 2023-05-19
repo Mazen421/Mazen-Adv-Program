@@ -15,6 +15,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
@@ -37,11 +38,13 @@ public class    Main extends Application{
     public void start(Stage stage) throws Exception {
         // TODO Auto-generated method stub
         try {
+            Image icon = new Image("/application/LogoBlueBG_cleanup.png");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/libdashboard.fxml"));
             Parent root = loader.load();
             Scene scene1 = new Scene(root);
             String css = this.getClass().getResource("/application/landingpage.css").toExternalForm();
             scene1.getStylesheets().add(css);
+            stage.getIcons().add(icon);
             stage.setTitle("Demo");
             stage.setScene(scene1);
 
