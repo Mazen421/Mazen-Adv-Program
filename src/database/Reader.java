@@ -70,13 +70,10 @@ public class Reader extends User {
     }
 
     public String toStringDebug() {
-        return "Reader{" +
-                "name='" + getName() + '\'' +
-                ", email='" + getEmail() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ", phoneNumber='" + getPhonenumber() + '\'' +
-                ", address='" + getAddress() + '\'' +
-                ", ID='" + getID() + '\'' +
-                '}';
+        return "name= " + getName() + '\n' +
+                "email= " + getEmail() + '\n' +
+                "phoneNumber= " + getPhonenumber() + '\n' +
+                "address= " + getAddress() + '\n' +
+                "ID= " + getID() + '\n';
     }
 }

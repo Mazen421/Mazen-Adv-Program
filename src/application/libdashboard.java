@@ -15,17 +15,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -38,23 +37,25 @@ public class libdashboard implements Initializable  {
     BookDatabase bookDatabase = LibSys.getBookDatabase();
     ReaderDatabase readerDatabase = LibSys.getReaderDatabase();
 
-    //TODO CHECK IF THE BOOK IS RENTED OR NOT FIRST BEFORE REMOVING IT
     @FXML
     private TreeView dashtree;
     @FXML
-    Button logbut;
-    @FXML
-    Label loggedlib,nousers,noAbooks,noBbooks;
+    Label loggedlib;
     @FXML
     TabPane tabPane;
     @FXML
-    private TextField titlefield,authorfield,genrefield,ISBNfield,pubYfield,namefield,emailfield,addressfield,phonefield,IDfield,booksearch1, usersearch1,booksearch2,usersearch2,usersearch3,usersearch4;
+    private TextField titlefield,authorfield,genrefield,ISBNfield,pubYfield,namefield,emailfield,addressfield,phonefield,IDfield,booksearch1,booksearch2,booksearch3, usersearch1,usersearch2,usersearch3,usersearch4,usersearch5;
     @FXML
     private PasswordField passfield;
     @FXML
-    private ListView<Book> listremovebook,listrentabook,listrentedbooks,allbookslist,allbookslist1;
+    private ListView<Book> listremovebook,listrentabook,listrentedbooks,allbookslist,allbookslist1,searchbooklist;
     @FXML
-    private ListView<Reader> listusers,listremoveuser,avuserlist,banneduserlist,waitingusersadd,waitingusersremove,alluserslist;
+    private ListView<Reader> listusers,listremoveuser,avuserlist,banneduserlist,waitingusersadd,waitingusersremove,alluserslist,searchuserlist;
+    @FXML
+    private TextArea steve;
+
+
+    
 
     Book currentbook;
     Book currentbook1;
@@ -76,6 +77,32 @@ public class libdashboard implements Initializable  {
         allbookslist.getItems().addAll(bookDatabase.getItems());
         allbookslist1.getItems().addAll(bookDatabase.getItems());
 
+
+        searchbooklist.getItems().addAll(bookDatabase.getItems());
+        searchuserlist.getItems().addAll(readerDatabase.getItems());
+
+
+        searchbooklist.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Book>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Book> arg0, Book arg1, Book arg2) {
+                    if(searchbooklist.getSelectionModel().selectedItemProperty().getValue() != null){
+                    steve.setText(searchbooklist.getSelectionModel().getSelectedItem().toStringDebug());
+                    }
+            }
+            
+        });
+
+        searchuserlist.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Reader>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Reader> arg0, Reader arg1, Reader arg2) {
+                    if(searchuserlist.getSelectionModel().selectedItemProperty().getValue() != null){
+                    steve.setText(searchuserlist.getSelectionModel().getSelectedItem().toStringDebug());
+                    }
+            }
+            
+        });
         
 
         allbookslist.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Book>() {
@@ -120,17 +147,22 @@ public class libdashboard implements Initializable  {
         users.getChildren().addAll(adduser,removeuser,blockuser);
 
         TreeItem<String> orderlist = new TreeItem<>("Order List");
-        TreeItem<String> adduserorder = new TreeItem<>("Add a user to the order list");
-        TreeItem<String> removeuserorder = new TreeItem<>("Remove a user from the order list");
-        orderlist.getChildren().addAll(adduserorder,removeuserorder);
+        TreeItem<String> adduserorder = new TreeItem<>("Add/Remove user to the order list");
+        orderlist.getChildren().addAll(adduserorder);
 
-        root.getChildren().addAll(books,users,orderlist);
+        TreeItem<String> search = new TreeItem<>("Search");
+        TreeItem<String> searchuser = new TreeItem<>("Search User/Book");
+        search.getChildren().addAll(searchuser);
+
+        root.getChildren().addAll(books,users,orderlist,search);
         dashtree.setShowRoot(false);
         dashtree.setRoot(root);
         
     }
 
-
+    public void displayname(String name){
+        loggedlib.setText(name);
+    }
     public void logout(ActionEvent le) throws IOException{
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -190,6 +222,28 @@ public class libdashboard implements Initializable  {
         }
     }
 
+    public void addusertowaitlist(){
+        Reader reader = alluserslist.getSelectionModel().getSelectedItem();
+        try{
+            allbookslist.getSelectionModel().getSelectedItem().addToWaitlist(reader);
+        }
+        catch(DoubleBorrowException exception){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Book already held by user");
+            alert.setContentText("The user you selected already has the book and can't be added to the waitlist");
+            alert.showAndWait();
+        }
+        
+        updateall(allbookslist.getSelectionModel().getSelectedItem());
+    }
+
+    public void removeuserfromwaitlist(){
+        Reader reader = waitingusersremove.getSelectionModel().getSelectedItem();
+        allbookslist1.getSelectionModel().getSelectedItem().removeFromWaitlist(reader);
+        updateall(allbookslist1.getSelectionModel().getSelectedItem());
+    }
+
     public void removebookbutton(){
         Book book = listremovebook.getSelectionModel().getSelectedItem();
 
@@ -239,7 +293,9 @@ public class libdashboard implements Initializable  {
     public void searchbook2(){
         searchbook(booksearch2, listremovebook);
     }
-
+    public void searchbook3(){
+        searchbook(booksearch3, searchbooklist);
+    }
     public void searchuser1(){
         searchuser(usersearch1, listusers);
     }
@@ -252,7 +308,9 @@ public class libdashboard implements Initializable  {
     public void searchuser4(){
         searchuser(usersearch4, banneduserlist);
     }
-
+    public void searchuser5(){
+        searchuser(usersearch5, searchuserlist);
+    }
     public void resetsearch(){
         updateall();
     }
@@ -269,8 +327,9 @@ public class libdashboard implements Initializable  {
             }
         else {
             try{
-                bookDatabase.borrowBook(book, reader);
-
+                if(!bookDatabase.borrowBook(book, reader)){ 
+                    throw new DoubleBorrowException("Book already owned, You have been added to the order list");
+                }
             }
             catch(DoubleBorrowException doubleborrow){
                 Alert alert2 = new Alert(AlertType.ERROR);
@@ -279,10 +338,11 @@ public class libdashboard implements Initializable  {
                 alert2.setContentText("Book already rented, you have been added to the waitlist");
                 alert2.showAndWait();
                 }
-                
                 updateall();
             }
-        }
+            
+            }
+        
     
     public void returnabook(){
 
@@ -292,6 +352,7 @@ public class libdashboard implements Initializable  {
 
     }
     
+
     public void updateall(){
         updatelist(listrentabook, bookDatabase.getItems());
         updatelist(listrentedbooks, bookDatabase.getBorrowedBooks());
@@ -302,6 +363,29 @@ public class libdashboard implements Initializable  {
         updatelist(banneduserlist, readerDatabase.returnBanned());
         updatelist(allbookslist, bookDatabase.getItems());
         updatelist(allbookslist1, bookDatabase.getItems());
+        updatelist(alluserslist, readerDatabase.getItems());
+        if(allbookslist.getSelectionModel().getSelectedItem() != null){
+        updatelist(waitingusersadd, allbookslist.getSelectionModel().getSelectedItem().getWaitlist());
+        }
+        updatelist(searchbooklist, bookDatabase.getItems());
+        updatelist(searchuserlist, readerDatabase.getItems());
+    }
+
+    public void updateall(Book book){
+        updatelist(listrentabook, bookDatabase.getItems());
+        updatelist(listrentedbooks, bookDatabase.getBorrowedBooks());
+        updatelist(listremovebook, bookDatabase.getItems());
+        updatelist(listusers, readerDatabase.getItems());
+        updatelist(listremoveuser, readerDatabase.getItems());
+        updatelist(avuserlist, readerDatabase.returnPermitted());
+        updatelist(banneduserlist, readerDatabase.returnBanned());
+        updatelist(allbookslist, bookDatabase.getItems());
+        updatelist(allbookslist1, bookDatabase.getItems());
+        updatelist(alluserslist, readerDatabase.getItems());
+        updatelist(waitingusersadd, book.getWaitlist());
+        updatelist(waitingusersremove, book.getWaitlist());
+        updatelist(searchbooklist, bookDatabase.getItems());
+        updatelist(searchuserlist, readerDatabase.getItems());
     }
 
     public void updatelist(ListView list, List db) {
@@ -343,13 +427,13 @@ public class libdashboard implements Initializable  {
                 tabPane.getSelectionModel().select(5);
                 System.out.println("block user");
                 break;
-            case "Add a user to the order list":
+            case "Add/Remove user to the order list":
                 tabPane.getSelectionModel().select(6);
                 System.out.println("add user to order list");
                 break;
-            case "Remove a user from the order list":
+            case "Search User/Book":
                 tabPane.getSelectionModel().select(7);
-                System.out.println("remove user from order list");
+                System.out.println("search user/book");
                 break;
             default:
                 System.out.println("default");
