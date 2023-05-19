@@ -121,14 +121,14 @@ public class Book {
     }
 
     public String toStringDebug() {
-        return "Book{" +
-            "title='" + title + '\'' +
-            ", author='" + author + '\'' +
-            ", genre='" + genre + '\'' +
-            ", ISBN='" + ISBN + '\'' +
-            ", publicationYear=" + publicationYear +
-            ", availability=" + availability +
-            '}';
+        return
+            "title= " + title + '\n' +
+            "author= " + author + '\n' +
+            "genre= " + genre + '\n' +
+            "ISBN= " + ISBN + '\n' +
+            "publicationYear= " + publicationYear + '\n' +
+            "availability= " + availability + '\n'
+            ;
 }
 
 }

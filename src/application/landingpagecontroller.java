@@ -3,7 +3,8 @@ package application;
 
 import java.io.IOException;
 
-import database.LibSys;
+import database.*;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,18 +60,27 @@ public class landingpagecontroller {
             // Login successful
             System.out.println("Login successful");
             if(LibSys.loginScreen(username, password) instanceof database.Reader){
-                root = FXMLLoader.load(getClass().getResource("userdashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("userdashboard.fxml"));
+                root = loader.load();
+
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+                
             }
             else{
-                root = FXMLLoader.load(getClass().getResource("libdashboard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("libdashboard.fxml"));
+                root = loader.load();
+
+                libdashboard libdash = loader.getController();
+                libdash.displayname(LibSys.loginScreen(username, password).getName());
+
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+
             }
         } 
         else {

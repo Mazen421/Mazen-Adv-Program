@@ -78,7 +78,10 @@ public class BookDatabase extends DummyDatabase<Book> {
         }
         else {
             book.addToWaitlist(reader);
-        return false;}
+            return false;
+            
+            
+        }
     }
 
     public boolean returnBook(Book book) {

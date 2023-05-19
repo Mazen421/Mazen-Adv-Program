@@ -47,6 +47,16 @@ public class LibSys {
         // Perform any necessary setup or configurations
         // ...TODO
         populateRandomData();
+
+        Librarian admin = new Librarian("admin", "admin@example.com", "admin123", "Admin Address", "1234567890", "11111");
+        Reader reader = new Reader("reader", "reader@example.com", "reader123", "Reader Address", "0987654321", "22222");
+        Book book = new Book("book", "author", "genre", "1234567890", 2020);
+        Book book2 = new Book("book2", "author2", "genre2", "0987654321", 2021);
+        librarianDatabase.addItem(admin);
+        readerDatabase.addItem(reader);
+        bookDatabase.addItem(book);
+        bookDatabase.addItem(book2);
+
         displayAll();
     }
 
