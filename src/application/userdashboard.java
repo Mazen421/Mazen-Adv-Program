@@ -81,9 +81,11 @@ public class userdashboard implements Initializable {
 
             @Override
             public void changed(ObservableValue<? extends Book> arg0, Book arg1, Book arg2) {
+
                 Book currentbook = booksorderlist.getSelectionModel().selectedItemProperty().getValue();
+                if(currentbook != null){
                 userswaitlist.getItems().addAll(currentbook.getWaitlist());
-                
+            }
             }
             
         });
@@ -208,9 +210,9 @@ public class userdashboard implements Initializable {
     public void orderbook(){
         if(booksorderlist.getSelectionModel().getSelectedItem() != null){
             if(booksorderlist.getSelectionModel().getSelectedItem().getHeldBy() == null){
-                Alert alert = new Alert(AlertType.ERROR);
+                Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Error");
-                alert.setHeaderText("Book already ordered");
+                alert.setHeaderText("Book is not rented");
                 alert.setContentText("This book is available, you can rent if you want");
                 alert.showAndWait();
                 updatelist(userswaitlist,booksorderlist.getSelectionModel().selectedItemProperty().getValue().getWaitlist());
@@ -291,7 +293,6 @@ public class userdashboard implements Initializable {
         updatelist(booksorderlist, bookDatabase.getItems());
         updatelist(rentabooklist, bookDatabase.getItems());
         updatelist(userrentedbooks, login.loginReader(username, password).getReaderBorrowedBooks());
-        
     }
     
     public void selectitem(){

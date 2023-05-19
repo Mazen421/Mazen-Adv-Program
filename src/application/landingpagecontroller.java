@@ -66,9 +66,13 @@ public class landingpagecontroller {
                 userdashboard userdash = loader.getController();
                 userdash.displayname(LibSys.loginScreen(username, password).getName());
                 userdash.setuserandpass(username, password);
-                
+            
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
+
+                String css = this.getClass().getResource("landingpage.css").toExternalForm();
+                scene.getStylesheets().add(css);
+
                 stage.setScene(scene);
                 stage.show();
                 
@@ -76,12 +80,16 @@ public class landingpagecontroller {
             else{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("libdashboard.fxml"));
                 root = loader.load();
-
+                
                 libdashboard libdash = loader.getController();
                 libdash.displayname(LibSys.loginScreen(username, password).getName());
 
                 stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
+
+                String css = this.getClass().getResource("landingpage.css").toExternalForm();
+                scene.getStylesheets().add(css);
+
                 stage.setScene(scene);
                 stage.show();
 

@@ -2,6 +2,7 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -175,8 +176,10 @@ public class libdashboard implements Initializable  {
             root = FXMLLoader.load(getClass().getResource("landingpage.fxml"));
             stage = (Stage) ((Node)le.getSource()).getScene().getWindow();
             scene = new Scene(root);
+
             String css = this.getClass().getResource("landingpage.css").toExternalForm();
             scene.getStylesheets().add(css);
+
             stage.setScene(scene);
             stage.show();
         }
@@ -191,10 +194,30 @@ public class libdashboard implements Initializable  {
         String author = authorfield.getText();
         String genre = genrefield.getText();
         String ISBN = ISBNfield.getText();
-        int pubY = Integer.parseInt(pubYfield.getText());
+        int pubY;
+
+        try{
+            pubY = Integer.parseInt(pubYfield.getText());
+            Book book = new Book(title,author,genre,ISBN,pubY);
+            bookDatabase.addItem(book);
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Book Added");
+    
+            alert.setHeaderText("Book added successfully");
+            alert.setContentText("The book has been added to the database");
+            alert.showAndWait();
+        }
+        catch(Exception inputMismatch){
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Publication Year Error");
+    
+            alert.setHeaderText("You entered a character into publication year");
+            alert.setContentText("Please ensure to type only number in there");
+            alert.showAndWait();
+        }
         
-        Book book = new Book(title,author,genre,ISBN,pubY);
-        bookDatabase.addItem(book);
+        
+
         updateall();
 
     }
@@ -211,6 +234,12 @@ public class libdashboard implements Initializable  {
             Reader reader = new Reader(name,email,password,address,phone,ID);
             readerDatabase.addItem(reader);
             System.out.println(reader.toString());
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("User Added");
+    
+            alert.setHeaderText("User added successfully");
+            alert.setContentText("The user has been added to the database");
+            alert.showAndWait();
             updateall();
         }
         else{
@@ -225,7 +254,17 @@ public class libdashboard implements Initializable  {
     public void addusertowaitlist(){
         Reader reader = alluserslist.getSelectionModel().getSelectedItem();
         try{
-            allbookslist.getSelectionModel().getSelectedItem().addToWaitlist(reader);
+            if(allbookslist.getSelectionModel().getSelectedItem() != null && alluserslist.getSelectionModel().getSelectedItem() != null){
+                allbookslist.getSelectionModel().getSelectedItem().addToWaitlist(reader);
+            }
+            else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Select a book and a user");
+                alert.setContentText("You have to select both a book and a user");
+                alert.showAndWait();
+            }
+            
         }
         catch(DoubleBorrowException exception){
             Alert alert = new Alert(AlertType.ERROR);
@@ -234,8 +273,12 @@ public class libdashboard implements Initializable  {
             alert.setContentText("The user you selected already has the book and can't be added to the waitlist");
             alert.showAndWait();
         }
-        
+        if(allbookslist.getSelectionModel().getSelectedItem() != null){
         updateall(allbookslist.getSelectionModel().getSelectedItem());
+        }
+        else{
+            updateall();
+        }
     }
 
     public void removeuserfromwaitlist(){
@@ -386,6 +429,7 @@ public class libdashboard implements Initializable  {
         updatelist(waitingusersremove, book.getWaitlist());
         updatelist(searchbooklist, bookDatabase.getItems());
         updatelist(searchuserlist, readerDatabase.getItems());
+        
     }
 
     public void updatelist(ListView list, List db) {
