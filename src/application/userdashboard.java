@@ -213,6 +213,7 @@ public class userdashboard implements Initializable {
                 alert.setHeaderText("Book already ordered");
                 alert.setContentText("This book is available, you can rent if you want");
                 alert.showAndWait();
+                updatelist(userswaitlist,booksorderlist.getSelectionModel().selectedItemProperty().getValue().getWaitlist());
             }
             else{
                 if(booksorderlist.getSelectionModel().getSelectedItem().getHeldBy() == LibSys.loginScreen(username, password).getName()){
@@ -221,6 +222,7 @@ public class userdashboard implements Initializable {
                     alert.setHeaderText("You already rented this book");
                     alert.setContentText("This book is already ordered by you");
                     alert.showAndWait();
+                    updatelist(userswaitlist,booksorderlist.getSelectionModel().selectedItemProperty().getValue().getWaitlist());
                 }
                 else{
                     booksorderlist.getSelectionModel().getSelectedItem().addToWaitlist(login.loginReader(username,password));
